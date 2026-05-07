@@ -1,0 +1,42 @@
+modLoader="javafml"
+loaderVersion="[47,)"
+license="MIT"
+
+[[mods]]
+modId="gotama_magic"
+version="1.0.0"
+displayName="Gotama Magic - Irons Ars Unified"
+description="""
+Unified spell integration for Iron's Spellbooks and Ars Nouveau.
+Store Iron's spell scrolls as glyphs directly in your Ars spellbook for unlimited spell storage in one unified book!
+
+Features:
+- Convert Iron's scrolls to Ars glyphs by right-clicking with scroll in hand and spellbook in off-hand
+- All spell levels stored separately with original icons
+- Single unified mana system
+- Prevents glyph switching during active casts
+"""
+
+authors="gotamatv"
+displayURL="https://github.com/gotamatv/gotama-magic"
+
+[[dependencies.gotama_magic]]
+    modId="minecraft"
+    mandatory=true
+    versionRange="[1.20.1]"
+    ordering="NONE"
+    side="BOTH"
+
+[[dependencies.gotama_magic]]
+    modId="ars_nouveau"
+    mandatory=true
+    versionRange="[4.12.7,)"
+    ordering="AFTER"
+    side="BOTH"
+
+[[dependencies.gotama_magic]]
+    modId="irons_spellbooks"
+    mandatory=false
+    versionRange="[3.15.x,)"
+    ordering="AFTER"
+    side="BOTH"

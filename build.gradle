@@ -1,0 +1,64 @@
+plugins {
+    id 'net.minecraftforge.gradle' version '[6.0,6.2)'
+}
+
+group = 'com.gotamatv'
+version = '1.0.0'
+archivesBaseName = 'gotama-magic'
+
+java.toolchain.languageVersion = JavaLanguageVersion.of(17)
+
+minecraft {
+    mappings channel: 'official', version: '1.20.1'
+    
+    runs {
+        client {
+            workingDirectory project.file('run')
+            mods {
+                gotama_magic {
+                    source sourceSets.main
+                }
+            }
+        }
+        
+        server {
+            workingDirectory project.file('run')
+            args '--nogui'
+            mods {
+                gotama_magic {
+                    source sourceSets.main
+                }
+            }
+        }
+    }
+}
+
+repositories {
+    mavenCentral()
+    maven {
+        name = 'CurseMaven'
+        url = 'https://cursemaven.com'
+    }
+}
+
+dependencies {
+    minecraft 'net.minecraftforge:forge:1.20.1-47.2.0'
+    compileOnly fg.deobf('curse.maven:irons-spellbooks-616089:4884623')
+    compileOnly fg.deobf('curse.maven:ars-nouveau-321309:4757699')
+}
+
+jar {
+    manifest {
+        attributes([
+            'Specification-Title': archivesBaseName,
+            'Specification-Vendor': 'gotamatv',
+            'Implementation-Title': project.name,
+            'Implementation-Version': project.jar.archiveVersion
+        ])
+    }
+}
+
+tasks.withType(JavaCompile).configureEach {
+    options.encoding = 'UTF-8'
+    options.release = 17
+}
